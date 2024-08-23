@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+/* src/styles/App.css */
+.call-to-action {
+  /* Example styling */
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
+
+.specials {
+  padding: 20px;
+}
+
+.customers-say {
+  padding: 20px;
+}
+
+.chicago {
+  padding: 20px;
+}
+
+.booking-page {
+  padding: 20px;
+}
