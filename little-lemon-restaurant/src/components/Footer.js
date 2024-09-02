@@ -5,10 +5,13 @@ export default function Footer() {
     <footer>
       <menu>
         <li className="img-footer">
+           <Link to="/">
           <img
             src={require("../assets/footer-logo.png")}
             alt="Little Lemon logo"
+            className="footer-image"
           ></img>
+        </Link>
         </li>
         <li className="contact">
           <h1 className="footer-header">Navigation</h1>
@@ -49,14 +52,14 @@ export default function Footer() {
           <h1 className="footer-header">Connect</h1>
           <ul className="footer-links">
             <a
-              href="https://www.facebook.com/thelittlelemonshop/"
+              href="https://www.facebook.com/"
               target="_blank"
               rel="noreferrer"
             >
               Facebook
             </a>
             <a
-              href="https://www.instagram.com/littlelemonmoon/"
+              href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
             >

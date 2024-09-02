@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 export default function ReservationForm(props) {
   const [finalTime, setFinalTime] = useState([]);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -42,6 +44,7 @@ export default function ReservationForm(props) {
     onSubmit: (values) => {
       console.log('Form data', values);
       // Handle form submission logic
+      navigate('/confirmation', { state: { reservationDetails: values } });
     },
   });
 
@@ -66,30 +69,34 @@ export default function ReservationForm(props) {
   };
 
   return (
-    <form className="reservation-form" onSubmit={formik.handleSubmit}>
+    <form className="reservation-form" onSubmit={formik.handleSubmit} aria-labelledby="reservation-form-title">
+      <h1 id="reservation-form-title">Reservation Form</h1>
+
       <div>
         <label htmlFor="fName">First Name<sup> *</sup></label> <br />
         <input
           type="text"
           id="fName"
           placeholder="First Name"
+          aria-label="First Name"
           {...formik.getFieldProps('fName')}
         />
         {formik.touched.fName && formik.errors.fName ? (
-          <div className="error">{formik.errors.fName}</div>
+          <div className="error" role="alert">{formik.errors.fName}</div>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor="lName">Last Name<sup> *</sup> </label> <br />
+        <label htmlFor="lName">Last Name<sup> *</sup></label> <br />
         <input
           type="text"
           id="lName"
           placeholder="Last Name"
+          aria-label="Last Name"
           {...formik.getFieldProps('lName')}
         />
         {formik.touched.lName && formik.errors.lName ? (
-          <div className="error">{formik.errors.lName}</div>
+          <div className="error" role="alert">{formik.errors.lName}</div>
         ) : null}
       </div>
 
@@ -99,10 +106,11 @@ export default function ReservationForm(props) {
           type="email"
           id="email"
           placeholder="Email"
+          aria-label="Email"
           {...formik.getFieldProps('email')}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div className="error">{formik.errors.email}</div>
+          <div className="error" role="alert">{formik.errors.email}</div>
         ) : null}
       </div>
 
@@ -112,10 +120,11 @@ export default function ReservationForm(props) {
           type="tel"
           id="phonenum"
           placeholder="(xxx)-xxx-xxxx"
+          aria-label="Phone Number"
           {...formik.getFieldProps('tel')}
         />
         {formik.touched.tel && formik.errors.tel ? (
-          <div className="error">{formik.errors.tel}</div>
+          <div className="error" role="alert">{formik.errors.tel}</div>
         ) : null}
       </div>
 
@@ -125,10 +134,11 @@ export default function ReservationForm(props) {
           type="number"
           id="people"
           placeholder="Number of People"
+          aria-label="Number of People"
           {...formik.getFieldProps('people')}
         />
         {formik.touched.people && formik.errors.people ? (
-          <div className="error">{formik.errors.people}</div>
+          <div className="error" role="alert">{formik.errors.people}</div>
         ) : null}
       </div>
 
@@ -137,11 +147,12 @@ export default function ReservationForm(props) {
         <input
           type="date"
           id="date"
+          aria-label="Select Date"
           {...formik.getFieldProps('date')}
           onChange={handleDateChange}
         />
         {formik.touched.date && formik.errors.date ? (
-          <div className="error">{formik.errors.date}</div>
+          <div className="error" role="alert">{formik.errors.date}</div>
         ) : null}
       </div>
 
@@ -149,13 +160,14 @@ export default function ReservationForm(props) {
         <label htmlFor="time">Select Time<sup> *</sup></label> <br />
         <select
           id="time"
+          aria-label="Select Time"
           {...formik.getFieldProps('time')}
         >
           <option value="" label="Select Time" />
           {finalTime}
         </select>
         {formik.touched.time && formik.errors.time ? (
-          <div className="error">{formik.errors.time}</div>
+          <div className="error" role="alert">{formik.errors.time}</div>
         ) : null}
       </div>
 
@@ -163,6 +175,7 @@ export default function ReservationForm(props) {
         <label htmlFor="occasion">Occasion</label> <br />
         <select
           id="occasion"
+          aria-label="Occasion"
           {...formik.getFieldProps('occasion')}
         >
           <option value="None">None</option>
@@ -174,9 +187,10 @@ export default function ReservationForm(props) {
       </div>
 
       <div>
-        <label htmlFor="preferences">Seating preferences</label> <br />
+        <label htmlFor="preferences">Seating Preferences</label> <br />
         <select
           id="preferences"
+          aria-label="Seating Preferences"
           {...formik.getFieldProps('preferences')}
         >
           <option value="None">None</option>
@@ -193,6 +207,7 @@ export default function ReservationForm(props) {
           rows={8}
           cols={50}
           placeholder="Additional Comments"
+          aria-label="Additional Comments"
           {...formik.getFieldProps('comments')}
         />
       </div>
@@ -205,7 +220,7 @@ export default function ReservationForm(props) {
             double-check your answer before submitting your reservation request.
           </p>
         </small>
-        <button type="submit" className="action-button" disabled={!formik.isValid || formik.isSubmitting}>
+        <button type="submit" className="action-button" aria-label="Submit Reservation" disabled={!formik.isValid || formik.isSubmitting}>
           Book Table
         </button>
       </div>

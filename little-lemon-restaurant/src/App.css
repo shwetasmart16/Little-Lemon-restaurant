@@ -393,6 +393,11 @@ Link:link {
 }
 
 /* FOOTER STYLING */
+.footer-image {
+  max-height: 6rem;
+  margin-top: 0.7rem;
+  margin-left: -1.25rem;
+}
 /* Ensure footer styles are consistent */
 footer {
   background-color: #495e57;
