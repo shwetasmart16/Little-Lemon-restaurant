@@ -336,6 +336,8 @@ Link:link {
 .testimonial-card {
   background-color: #edefee;
   padding: 1rem 1rem 0 1rem;
+  width: 14rem;
+  height: 16rem;
 }
 
 .testimonial-card > img {
@@ -638,24 +640,39 @@ footer > menu {
   .action-button {
     font-size: 1.2rem;
   }
-
   .specials {
-    margin: 0 -2rem 0 -2rem;
+    padding: 1rem;
   }
 
   .specials-topbar {
-    flex-wrap: wrap;
-    margin-left: 2rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .specials-topbar h1 {
+    font-size: 1.8rem;
   }
 
   .specials-cards {
-    display: none;
+    grid-template-columns: 1fr; /* Convert to a single column for smaller screens */
+    gap: 1.5rem;
+  }
+
+  .action-button {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    margin-bottom: 1.5rem; /* Add spacing between button and topbar */
   }
 
   .specials-carousel {
-    display: block;
+    display: none; /* Still keep carousel hidden for tablet screens */
   }
 
+  .action-button {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+  }
   .menu-card {
     padding-bottom: 2rem;
   }
@@ -695,6 +712,7 @@ footer > menu {
   .testimonial-card > p {
     margin-top: -1rem;
     margin-bottom: 2.5rem;
+    display: none;
   }
 
   .about-us {
@@ -748,6 +766,7 @@ footer > menu {
 
   .testimonials {
     padding: 0 2rem 0 2rem;
+    display: none;
   }
 
   .about-us {
